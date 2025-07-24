@@ -78,7 +78,7 @@ export function simpleMockProxy(opts) {
         // 生成 mock api 文件内容
         const method = (req.method || 'GET').toLowerCase();
         const code = `import { jsonRead, simpleSend } from 'simple-mock-proxy'
-    const url = '${normPath}'
+    const url = '/${normPath}'
     export default [
         {
 

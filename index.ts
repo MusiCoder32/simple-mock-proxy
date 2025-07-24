@@ -92,7 +92,7 @@ export function simpleMockProxy(opts: {
        
         const method = (req.method || 'GET').toLowerCase()
         const code = `import { jsonRead, simpleSend } from 'simple-mock-proxy'
-    const url = '${normPath}'
+    const url = '/${normPath}'
     export default [
         {
 
