@@ -89,16 +89,17 @@ export function simpleMockProxy(opts: {
         const jsonFilePath = path.join(dbDir, fileName + '.json')
 
         // 生成 mock api 文件内容
-        const mockUrl = path.posix.join(mockPath, normPath)
+       
         const method = (req.method || 'GET').toLowerCase()
         const code = `import { jsonRead, simpleSend } from 'simple-mock-proxy'
-    const url = '${mockUrl}'
+    const url = '${normPath}'
     export default [
         {
-            url,
+
+             url: '${mockPath}' + url,
             method: '${method}',
             rawResponse: async (req, res) => {
-                const jsonData = await jsonRead(url + '.json')
+                const jsonData = await jsonRead('${mockPath}/database' + url + '.json')
                 simpleSend(req, res, jsonData)
             },
         },
